@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS pguser CASCADE;
+DROP TABLE IF EXISTS pgmessage CASCADE;
+
+CREATE TABLE pguser (
+	id bigserial PRIMARY KEY,
+	email varchar(25) NOT NULL UNIQUE,
+	password varchar(50) NOT NULL,
+	nickname varchar(50) NOT NULL,
+	first_name varchar(50) NOT NULL,
+	second_name varchar(50) NOT NULL,
+	is_active bool NOT NULL,
+	is_deleted bool NOT NULL
+);
+
+CREATE TABLE pgmessage (
+	id bigserial PRIMARY KEY,
+	message text NOT NULL,
+	from_user bigint NOT NULL,
+	to_user bigint NOT NULL
+);
