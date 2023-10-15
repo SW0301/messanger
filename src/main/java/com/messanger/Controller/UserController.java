@@ -88,7 +88,7 @@ public class UserController {
             User user = userService.changePassword(id, password);
             return ResponseEntity.ok(user);
         } catch(SecurityException e){
-            return ResponseEntity.badRequest().body("Войдите в сисетму");
+            return ResponseEntity.badRequest().body("Войдите в систему");
         } catch (EntityNotFoundException e ) {
             return ResponseEntity.badRequest().body("Something wrong");
         } catch (NullPointerException e) {

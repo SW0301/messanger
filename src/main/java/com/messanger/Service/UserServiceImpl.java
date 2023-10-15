@@ -77,6 +77,8 @@ public class UserServiceImpl implements UserService {
     public void logout(Long id) {
         try {
             User user = userRepository.getReferenceById(id);
+            if(!user.isActive())
+                throw new SecurityException();
             user.setActive(false);
             userRepository.save(user);
         } catch (EntityNotFoundException e) {
@@ -131,12 +133,14 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         try {
             User user = userRepository.getReferenceById(id);
-            if (!user.isActive())
-                throw new SecurityException();
+
             if(user.isDeleted())
                 throw new EntityNotFoundException();
+            if (!user.isActive())
+                throw new SecurityException();
             user.setDeleted(true);
             user.setActive(false);
+            userRepository.save(user);
         } catch (EntityNotFoundException e) {
             throw e;
         }

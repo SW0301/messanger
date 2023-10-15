@@ -2,7 +2,6 @@ package com.messanger.Controller;
 
 
 import com.messanger.DTO.SendMessageDTO;
-import com.messanger.Model.Message;
 import com.messanger.Service.MessageServiceImpl;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;

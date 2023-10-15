@@ -1,6 +1,8 @@
 package com.messanger.DTO;
 
-import jakarta.annotation.Nonnull;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +11,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class CreateUserDTO {
-
+    @Email
+    @NotBlank
     private String email;
 
     private String password;
